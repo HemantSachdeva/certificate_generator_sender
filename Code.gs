@@ -27,7 +27,6 @@ function createCertificates() {
   var values = sheet.getDataRange().getValues();
   var headers = values[0];
   var studNameIndex = headers.indexOf("name");
-  var studEmailIndex = headers.indexOf("email");
   var studSlideIndex = headers.indexOf("certificate_slide");
   var statusIndex = headers.indexOf("status");
   
@@ -42,7 +41,7 @@ function createCertificates() {
     var studSlide = SlidesApp.openById(studSlideId).getSlides()[0];
     
     // Replace placeholder values with actual student related details
-    studSlide.replaceAllText("Student Name", studName); // Replace all instances of "Student Name" from the template with the actual value from the spreadsheet
+    studSlide.replaceAllText("Name", studName); // Replace all instances of "Student Name" from the template with the actual value from the spreadsheet
     
     // Update the spreadsheet with the new Slide Id and status
     sheet.getRange(i + 1, studSlideIndex + 1).setValue(studSlideId);
@@ -62,7 +61,7 @@ function sendCertificates() {
   var values = sheet.getDataRange().getValues();
   var headers = values[0];
   var studNameIndex = headers.indexOf("name");
-  var studEmailIndex = headers.indexOf("mail");
+  var studEmailIndex = headers.indexOf("email");
   var studSlideIndex = headers.indexOf("certificate_slide");
   var statusIndex = headers.indexOf("status");
   
